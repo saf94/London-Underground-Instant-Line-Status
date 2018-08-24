@@ -1,0 +1,6 @@
+framework module Pods_London_Underground_Instant_Line_Status {
+  umbrella header "Pods-London Underground Instant Line Status-umbrella.h"
+
+  export *
+  module * { export * }
+}

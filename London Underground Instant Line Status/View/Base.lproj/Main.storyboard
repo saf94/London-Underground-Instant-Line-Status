@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="London_Underground_Instant_Line_Status" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homePage-background" translatesAutoresizingMaskIntoConstraints="NO" id="GDy-WC-Tdf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eh0-2k-5Cp" userLabel="backgroundDarkenLayer">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" red="0.20392156862745098" green="0.28627450980392155" blue="0.36862745098039218" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TwY-Ih-89o" userLabel="HeadingContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your line..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKN-Cg-eVV">
+                                        <rect key="frame" x="0.0" y="30" width="414" height="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="QKN-Cg-eVV" secondAttribute="trailing" id="F7I-q7-olp"/>
+                                    <constraint firstAttribute="height" constant="95" id="Hsx-t0-N2C"/>
+                                    <constraint firstItem="QKN-Cg-eVV" firstAttribute="top" secondItem="TwY-Ih-89o" secondAttribute="top" constant="30" id="SBL-ES-tLG"/>
+                                    <constraint firstItem="QKN-Cg-eVV" firstAttribute="leading" secondItem="TwY-Ih-89o" secondAttribute="leading" id="TsA-Cp-5C2"/>
+                                    <constraint firstAttribute="bottom" secondItem="QKN-Cg-eVV" secondAttribute="bottom" constant="20" id="ucV-f0-SlY"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6P1-ud-KJV" userLabel="ButtonContainer">
+                                <rect key="frame" x="0.0" y="95" width="414" height="641"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="he2-TB-6ms">
+                                        <rect key="frame" x="20" y="20" width="374" height="601"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHe-YW-EHB">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="47.333333333333336"/>
+                                                <color key="backgroundColor" red="0.54191672801971436" green="0.30667018890380859" blue="0.11871583014726639" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                <state key="normal" title="Bakerloo">
+                                                    <color key="titleColor" red="1" green="0.98899419749999995" blue="0.95134434739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rjF-19-UhH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtd-fi-Uum">
+                                                <rect key="frame" x="0.0" y="55.333333333333343" width="374" height="47.333333333333343"/>
+                                                <color key="backgroundColor" red="0.87251627445220947" green="0.12790131568908691" blue="0.06395537406206131" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Central">
+                                                    <color key="titleColor" red="1" green="0.98899419749999995" blue="0.95134434739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tvT-D7-7fn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ek-qt-CTL">
+                                                <rect key="frame" x="0.0" y="110.66666666666664" width="374" height="47.333333333333329"/>
+                                                <color key="backgroundColor" red="1" green="0.81365424394607544" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Circle">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SO9-SP-vhC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gt-eE-VLm">
+                                                <rect key="frame" x="0.0" y="166" width="374" height="47.333333333333343"/>
+                                                <color key="backgroundColor" red="0.0" green="0.45128130912780762" blue="0.1434464156627655" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="District">
+                                                    <color key="titleColor" red="1" green="0.98899419749999995" blue="0.95134434739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i0q-bs-jhE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMd-xa-tEh">
+                                                <rect key="frame" x="0.0" y="221.33333333333331" width="374" height="47.333333333333314"/>
+                                                <color key="backgroundColor" red="0.84813231229782104" green="0.59703153371810913" blue="0.686393141746521" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Hammersmith &amp; City">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FK9-OQ-24G"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4I-OC-y8l">
+                                                <rect key="frame" x="0.0" y="276.66666666666669" width="374" height="47.666666666666686"/>
+                                                <color key="backgroundColor" red="0.41467958688735962" green="0.44675713777542114" blue="0.47179722785949707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Jubilee">
+                                                    <color key="titleColor" red="1" green="0.98899419749999995" blue="0.95134434739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5qs-K2-aj6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rc9-vl-pob">
+                                                <rect key="frame" x="0.0" y="332.33333333333331" width="374" height="47.333333333333314"/>
+                                                <color key="backgroundColor" red="0.46394360065460205" green="0.036875307559967041" blue="0.33997732400894165" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Metropolitan">
+                                                    <color key="titleColor" red="1" green="0.98899419749999995" blue="0.95134434739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tCv-Mh-swp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YnI-OJ-EiW">
+                                                <rect key="frame" x="0.0" y="387.66666666666669" width="374" height="47.333333333333314"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Northern">
+                                                    <color key="titleColor" red="1" green="0.98899419749999995" blue="0.95134434739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5lj-f5-0kH"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36J-Lr-due">
+                                                <rect key="frame" x="0.0" y="443" width="374" height="47.333333333333314"/>
+                                                <color key="backgroundColor" red="0.0" green="0.034399215131998062" blue="0.67063432931900024" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Piccadilly">
+                                                    <color key="titleColor" red="1" green="0.98899419749999995" blue="0.95134434739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ciy-gx-K1y"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23F-D4-f8u">
+                                                <rect key="frame" x="0.0" y="498.33333333333331" width="374" height="47.333333333333314"/>
+                                                <color key="backgroundColor" red="0.0" green="0.62245833873748779" blue="0.89690405130386353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Victoria">
+                                                    <color key="titleColor" red="1" green="0.98899419749999995" blue="0.95134434739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LuF-OA-PdU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dT7-SF-lRI">
+                                                <rect key="frame" x="0.0" y="553.66666666666663" width="374" height="47.333333333333371"/>
+                                                <color key="backgroundColor" red="0.44861459732055664" green="0.81807601451873779" blue="0.74126929044723511" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Waterloo &amp; City">
+                                                    <color key="titleColor" red="1" green="0.98899419749999995" blue="0.95134434739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="lineStatusButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uot-lu-k1V"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="he2-TB-6ms" secondAttribute="bottom" constant="20" id="24V-aR-uyn"/>
+                                    <constraint firstItem="he2-TB-6ms" firstAttribute="top" secondItem="6P1-ud-KJV" secondAttribute="top" constant="20" id="CV2-ee-1nf"/>
+                                    <constraint firstItem="he2-TB-6ms" firstAttribute="leading" secondItem="6P1-ud-KJV" secondAttribute="leading" constant="20" id="YqX-d0-88n"/>
+                                    <constraint firstAttribute="trailing" secondItem="he2-TB-6ms" secondAttribute="trailing" constant="20" id="d3U-c2-eN2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Eh0-2k-5Cp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2Wv-Iy-EXX"/>
+                            <constraint firstItem="GDy-WC-Tdf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3Sx-1x-Z5X"/>
+                            <constraint firstItem="6P1-ud-KJV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5rl-7A-7Kq"/>
+                            <constraint firstAttribute="trailing" secondItem="Eh0-2k-5Cp" secondAttribute="trailing" id="Nsr-sL-RaF"/>
+                            <constraint firstItem="TwY-Ih-89o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="S92-XJ-M4c"/>
+                            <constraint firstItem="TwY-Ih-89o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="S9e-L8-gMZ"/>
+                            <constraint firstItem="TwY-Ih-89o" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="SP3-Ig-yXy"/>
+                            <constraint firstItem="Eh0-2k-5Cp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VZ1-Xg-RCh"/>
+                            <constraint firstItem="6P1-ud-KJV" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="bUE-ys-BzS"/>
+                            <constraint firstItem="GDy-WC-Tdf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bwL-9b-p1P"/>
+                            <constraint firstItem="6P1-ud-KJV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gWA-7E-CuP"/>
+                            <constraint firstItem="6P1-ud-KJV" firstAttribute="top" secondItem="TwY-Ih-89o" secondAttribute="bottom" id="ivi-wx-zb3"/>
+                            <constraint firstItem="Eh0-2k-5Cp" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mMG-iF-Cj2"/>
+                            <constraint firstItem="GDy-WC-Tdf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="tBp-uz-v46"/>
+                            <constraint firstItem="GDy-WC-Tdf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uhx-fY-syU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="bakerlooLineButton" destination="CHe-YW-EHB" id="pvL-4j-kU9"/>
+                        <outlet property="centralLineButton" destination="dtd-fi-Uum" id="wY5-Cb-NwM"/>
+                        <outlet property="circleLineButton" destination="2ek-qt-CTL" id="pcM-zV-TGN"/>
+                        <outlet property="districtLineButton" destination="6gt-eE-VLm" id="6LB-0c-Gu7"/>
+                        <outlet property="hammersmithAndCityLineButton" destination="DMd-xa-tEh" id="aBW-e3-iqC"/>
+                        <outlet property="jubileeLineButton" destination="j4I-OC-y8l" id="RVK-5Y-BE2"/>
+                        <outlet property="metropolitanLineButton" destination="rc9-vl-pob" id="RPE-k9-U4E"/>
+                        <outlet property="northernLineButton" destination="YnI-OJ-EiW" id="hyW-q0-QDx"/>
+                        <outlet property="piccadillyLineButton" destination="36J-Lr-due" id="eYu-pa-CFy"/>
+                        <outlet property="victoriaLineButton" destination="23F-D4-f8u" id="gcH-cp-jHJ"/>
+                        <outlet property="waterlooAndCityLineButton" destination="dT7-SF-lRI" id="EWL-tz-jt2"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="bakerlooLinePage" id="p0C-dy-QhA"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="centralLinePage" id="psJ-3J-aP0"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="circleLinePage" id="n9O-ze-8mr"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="districtLinePage" id="i0K-qu-Bm2"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="hammersmithAndCityLinePage" id="hw1-YS-qnH"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="jubileeLinePage" id="mje-8S-sGA"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="northernLinePage" id="mG4-Qn-4pK"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="piccadillyLinePage" id="2JE-QI-LbJ"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="victoriaLinePage" id="ih7-dG-hkl"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="metropolitanLinePage" id="Ppy-Un-OEs"/>
+                        <segue destination="TS6-Mj-xzI" kind="show" identifier="waterlooAndCityLinePage" id="XZR-Ic-pOZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-205.79710144927537" y="29.347826086956523"/>
+        </scene>
+        <!--Line Status View Controller-->
+        <scene sceneID="XuY-wm-NLL">
+            <objects>
+                <viewController storyboardIdentifier="LineStatusViewController" id="TS6-Mj-xzI" customClass="LineStatusViewController" customModule="London_Underground_Instant_Line_Status" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="31S-Nw-wup">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lineStatusPage-background" translatesAutoresizingMaskIntoConstraints="NO" id="iuh-Eq-PSG">
+                                <rect key="frame" x="0.0" y="237" width="414" height="499"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2p-xd-nh9" userLabel="TopContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEa-lu-Jvk">
+                                        <rect key="frame" x="0.0" y="36" width="414" height="37"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="BkY-FQ-PGc"/>
+                                    <constraint firstItem="XEa-lu-Jvk" firstAttribute="top" secondItem="f2p-xd-nh9" secondAttribute="top" constant="36.5" id="N8a-Cc-5SE"/>
+                                    <constraint firstItem="XEa-lu-Jvk" firstAttribute="leading" secondItem="f2p-xd-nh9" secondAttribute="leading" id="WiD-Zb-WpA"/>
+                                    <constraint firstAttribute="trailing" secondItem="XEa-lu-Jvk" secondAttribute="trailing" id="mOS-9u-C1F"/>
+                                    <constraint firstAttribute="bottom" secondItem="XEa-lu-Jvk" secondAttribute="bottom" constant="36.5" id="uu1-hX-d2G"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ift-MR-CqU" userLabel="MiddleContainer">
+                                <rect key="frame" x="0.0" y="110" width="414" height="114"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pxl-iH-bww">
+                                        <rect key="frame" x="89" y="0.0" width="325" height="114"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="Nyb-o1-pDz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Pxl-iH-bww" secondAttribute="bottom" id="Oea-OF-yGt"/>
+                                    <constraint firstItem="Pxl-iH-bww" firstAttribute="leading" secondItem="Ift-MR-CqU" secondAttribute="leading" constant="89" id="Ruy-wB-4Fg"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pxl-iH-bww" secondAttribute="trailing" id="gKV-R0-gTW"/>
+                                    <constraint firstItem="Pxl-iH-bww" firstAttribute="top" secondItem="Ift-MR-CqU" secondAttribute="top" id="nOH-ip-8nW"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="za1-w8-1Ff" userLabel="BottomContainer">
+                                <rect key="frame" x="0.0" y="224" width="414" height="512"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-u7-jgM">
+                                        <rect key="frame" x="122" y="357" width="171" height="47"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70275042808219179" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="DRb-Cu-aff"/>
+                                            <constraint firstAttribute="width" constant="171" id="oeV-Vc-4BY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Return">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissViewController:" destination="TS6-Mj-xzI" eventType="touchUpInside" id="X9z-rs-P3J"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lk3-v1-bqI">
+                                        <rect key="frame" x="86" y="434.66666666666663" width="243" height="47"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70275042809999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="243" id="osQ-hP-FXp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Set as preferred line">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="setLineAsPreferred:" destination="TS6-Mj-xzI" eventType="touchUpInside" id="9jR-56-NGx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2ea-u7-jgM" secondAttribute="bottom" constant="108" id="5WS-K5-x0x"/>
+                                    <constraint firstItem="lk3-v1-bqI" firstAttribute="leading" secondItem="za1-w8-1Ff" secondAttribute="leading" constant="85.5" id="AxC-5U-6sS"/>
+                                    <constraint firstAttribute="bottom" secondItem="lk3-v1-bqI" secondAttribute="bottom" constant="30.5" id="EYG-wC-3v6"/>
+                                    <constraint firstItem="lk3-v1-bqI" firstAttribute="top" secondItem="2ea-u7-jgM" secondAttribute="bottom" constant="30.5" id="FCn-Tt-6da"/>
+                                    <constraint firstAttribute="trailing" secondItem="lk3-v1-bqI" secondAttribute="trailing" constant="85.5" id="SM9-M0-Da5"/>
+                                    <constraint firstItem="2ea-u7-jgM" firstAttribute="leading" secondItem="za1-w8-1Ff" secondAttribute="leading" constant="122" id="aHA-X9-tt6"/>
+                                    <constraint firstAttribute="trailing" secondItem="2ea-u7-jgM" secondAttribute="trailing" constant="121" id="zAV-eg-2dh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="za1-w8-1Ff" firstAttribute="leading" secondItem="Z0h-36-YcS" secondAttribute="leading" id="03Z-CJ-nAA"/>
+                            <constraint firstItem="Ift-MR-CqU" firstAttribute="trailing" secondItem="Z0h-36-YcS" secondAttribute="trailing" id="8aT-Or-0bU"/>
+                            <constraint firstItem="f2p-xd-nh9" firstAttribute="trailing" secondItem="Z0h-36-YcS" secondAttribute="trailing" id="EE5-5c-Bwm"/>
+                            <constraint firstItem="f2p-xd-nh9" firstAttribute="leading" secondItem="Z0h-36-YcS" secondAttribute="leading" id="EXi-Kk-jxd"/>
+                            <constraint firstItem="f2p-xd-nh9" firstAttribute="top" secondItem="31S-Nw-wup" secondAttribute="top" id="Mqw-h6-fmb"/>
+                            <constraint firstItem="za1-w8-1Ff" firstAttribute="bottom" secondItem="Z0h-36-YcS" secondAttribute="bottom" id="QQ6-Nn-Q4s"/>
+                            <constraint firstItem="Ift-MR-CqU" firstAttribute="leading" secondItem="Z0h-36-YcS" secondAttribute="leading" id="fLR-aF-4Kp"/>
+                            <constraint firstItem="Ift-MR-CqU" firstAttribute="top" secondItem="f2p-xd-nh9" secondAttribute="bottom" id="giN-rk-HwR"/>
+                            <constraint firstItem="za1-w8-1Ff" firstAttribute="top" secondItem="Ift-MR-CqU" secondAttribute="bottom" id="rOr-7Q-0Oy"/>
+                            <constraint firstItem="za1-w8-1Ff" firstAttribute="trailing" secondItem="Z0h-36-YcS" secondAttribute="trailing" id="zKu-Og-QOB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z0h-36-YcS"/>
+                    </view>
+                    <connections>
+                        <outlet property="linePreferenceButton" destination="lk3-v1-bqI" id="l9k-8X-dqF"/>
+                        <outlet property="lineStatusDetails" destination="Pxl-iH-bww" id="sJg-SZ-4AB"/>
+                        <outlet property="pageHeading" destination="XEa-lu-Jvk" id="Ymj-1O-Yzi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3l-7r-x07" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="986.95652173913049" y="31.793478260869566"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="homePage-background" width="1847" height="2707"/>
+        <image name="lineStatusPage-background" width="1936" height="2592"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ih7-dG-hkl"/>
+    </inferredMetricsTieBreakers>
+</document>
