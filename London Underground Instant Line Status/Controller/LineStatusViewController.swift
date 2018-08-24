@@ -21,10 +21,13 @@ class LineStatusViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let gradientBackground = GradientBackground(frame: UIScreen.main.bounds, gradientInitialColour: lineColour)
         // Do any additional setup after loading the view.
+        
+        let gradientBackground = GradientBackground(frame: UIScreen.main.bounds, gradientInitialColour: lineColour)
+        
         pageHeading.text = lineData.lineName
         lineStatusDetails.text = "\(lineData.lineName): \(lineData.lineStatus) \(lineData.lineDescription)"
+        
         self.view.insertSubview(gradientBackground, at: 1)
         addTubeLineShape()
         addTubeStopShape()

@@ -22,28 +22,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
         if response.notification.request.identifier == "lineStatusUpdate" {
-            print("handling notification with id of lineStatusUpdate")
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+            let presentViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            presentViewController.toSegueStraightToLine = "Yes"
 
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                
-//                let lineStatusObject = data.lineStatusObject
-//                let presentViewController = storyBoard.instantiateViewController(withIdentifier: "LineStatusViewController") as! LineStatusViewController
-                  let presentViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-                  presentViewController.toSegueStraightToLine = "Yes"
-//                presentViewController.lineData = lineStatusObject.Piccadilly
-//                presentViewController.lineColour = Colours.Piccadilly
-
-                self.window?.rootViewController = presentViewController
-                self.window?.makeKeyAndVisible()
+            self.window?.rootViewController = presentViewController
+            self.window?.makeKeyAndVisible()
         }
         
         completionHandler()
     }
-    
-//    func runGetDataApiCall(completion: (_ data: GetTflData) -> ()) -> Void {
-//        let getTflData = GetTflData()
-//        completion(getTflData)
-//    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

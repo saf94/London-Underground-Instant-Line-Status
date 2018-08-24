@@ -12,14 +12,20 @@ import UserNotifications
 class ViewController: UIViewController {
     
     /*
-     To do:
      
-        Set up local storage to save user data (needed for the below)
+     What does the app do:
+        The app is to help people easily know what the status of their line is before they leave for work or leave for home. It will work by getting line status info from TFL open api. Users will choose their preferred line in the app and then the app will send local notifications at set times (e.g. 8am) to let them know the status of their line
+     
+     To do:
         Save your line and assign that to the content of the notification
-        Segue into that line when notification is pressed
+        Segue into that line when notification is pressed and pass in data to show
         Let user choose time to schedule notification
         Set up app to regularly refresh data in the background (even if app isnt open)
      
+     Main Issues:
+        1) Trying to save user's preferred line as a string and using that string to get data for that line from the tflData class instance and adding the line status to the body of the notification. Currently body doesn't show anything, unsure why this is
+     
+        2) After user taps on notification it opens app and segues to their line, but data isnt passed through the segue to the next viewcontroller so the data to show the line status doesn't exist and the viewcontroller is blank with no data
      */
     
     @IBOutlet weak var bakerlooLineButton: UIButton!
@@ -34,6 +40,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var victoriaLineButton: UIButton!
     @IBOutlet weak var waterlooAndCityLineButton: UIButton!
     
+    //variable to track whether have arrived here from tapping notification and in that case should segue straight to the lineStatus viewcontroller
     var toSegueStraightToLine : String = ""
     let getTflData = GetTflData()
     let defaults = UserDefaults.standard
@@ -41,8 +48,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-//        getTflData.getTubeStatusData()
+
+        //ISSUE 2) - Tried to write a closure because i thought the data wasn't being passed into the segue as maybe it hadn't loaded it from the API yet? However this closure doesnt work and the body of the closure doesn't run?
         makeApiRequestToTfl() { () in
             print("lineStatusObject", getTflData.lineStatusObject.Bakerloo.lineStatus)
         }
@@ -54,6 +61,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if toSegueStraightToLine == "Yes" {
+            //segueing to bakerloo line only just for testing, should segue to the users saved preferred line
             performSegue(withIdentifier: "bakerlooLinePage", sender: self)
             toSegueStraightToLine = ""
         }
@@ -64,6 +72,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //ISSUE - 2) function that returns the closure that doesnt work (see above issue)
     func makeApiRequestToTfl(response : () -> Void) {
         getTflData.getTubeStatusData()
         response()
@@ -80,6 +89,7 @@ class ViewController: UIViewController {
         
     }
     
+    //ISSUE 1) - Am using the saved string of the users line preference to assign the line status to the notification content body but it doesn't show up in the notification pop up, not sure why
     func scheduleNotifications() {
         let preferredLine = defaults.string(forKey: "PreferredLineData")!
         let content = UNMutableNotificationContent()
@@ -125,17 +135,13 @@ class ViewController: UIViewController {
         
         content.sound = UNNotificationSound.default()
         
+        //notification runs after 5 seconds of view loading, this is for testing purposes - would actually run once or twice a day at a set time
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
-        
         let request = UNNotificationRequest(identifier: "lineStatusUpdate", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { (error) in
             print(error as Any)
         }
-    }
-    
-    func segueToLineStatus(identifier: String) {
-        performSegue(withIdentifier: identifier, sender: self)
     }
     
     @IBAction func lineStatusButtons(_ sender: UIButton) {
