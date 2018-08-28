@@ -50,11 +50,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
         //ISSUE 2) - Tried to write a closure because i thought the data wasn't being passed into the segue as maybe it hadn't loaded it from the API yet? However this closure doesnt work and the body of the closure doesn't run?
-        makeApiRequestToTfl() { () in
-            print("lineStatusObject", getTflData.lineStatusObject.Bakerloo.lineStatus)
+        
+        getTflData.getTubeStatusData() { () in
+            let data = self.getTflData.lineStatusObject
+            print("lineStatusObject", data.Central.lineStatus)
+            self.scheduleNotifications()
         }
         addStylingToButton()
-        scheduleNotifications()
+        
         
     }
     
@@ -62,7 +65,8 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         if toSegueStraightToLine == "Yes" {
             //segueing to bakerloo line only just for testing, should segue to the users saved preferred line
-            performSegue(withIdentifier: "bakerlooLinePage", sender: self)
+            let preferredLine = defaults.string(forKey: "PreferredLineData")!.lowercased()
+            performSegue(withIdentifier: "\(preferredLine)LinePage", sender: self)
             toSegueStraightToLine = ""
         }
     }
@@ -70,12 +74,6 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    //ISSUE - 2) function that returns the closure that doesnt work (see above issue)
-    func makeApiRequestToTfl(response : () -> Void) {
-        getTflData.getTubeStatusData()
-        response()
     }
     
     func addStylingToButton() {
