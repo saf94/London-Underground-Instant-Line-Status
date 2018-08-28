@@ -17,10 +17,17 @@ class ViewController: UIViewController {
         The app is to help people easily know what the status of their line is before they leave for work or leave for home. It will work by getting line status info from TFL open api. Users will choose their preferred line in the app and then the app will send local notifications at set times (e.g. 8am) to let them know the status of their line
      
      To do:
-        Save your line and assign that to the content of the notification
-        Segue into that line when notification is pressed and pass in data to show
-        Let user choose time to schedule notification
+        DONE - * Save your line and assign that to the content of the notification *
+        DONE - * Segue into that line when notification is pressed and pass in data to show *
         Set up app to regularly refresh data in the background (even if app isnt open)
+        Choose time for scheduled notifications to run
+        Let user choose time to schedule notification
+     
+     Bugs:
+        - Set as preferred line button doesnt disappear when you open line page through tapping on notification
+        - Notification send you to wrong line page if you change preferred line before you tap it
+        - Autolayout for buttons at bottom of linepage vc don't scale properly
+        -
      
      Main Issues:
         1) Trying to save user's preferred line as a string and using that string to get data for that line from the tflData class instance and adding the line status to the body of the notification. Currently body doesn't show anything, unsure why this is
@@ -52,17 +59,15 @@ class ViewController: UIViewController {
         //ISSUE 2) - Tried to write a closure because i thought the data wasn't being passed into the segue as maybe it hadn't loaded it from the API yet? However this closure doesnt work and the body of the closure doesn't run?
         
         getTflData.getTubeStatusData() { () in
-            let data = self.getTflData.lineStatusObject
-            print("lineStatusObject", data.Central.lineStatus)
             self.scheduleNotifications()
+            self.segueStraightToLinePage()
         }
         addStylingToButton()
         
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    func segueStraightToLinePage() {
         if toSegueStraightToLine == "Yes" {
             //segueing to bakerloo line only just for testing, should segue to the users saved preferred line
             let preferredLine = defaults.string(forKey: "PreferredLineData")!.lowercased()
