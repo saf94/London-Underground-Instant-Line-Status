@@ -19,13 +19,19 @@ class ViewController: UIViewController {
      To do:
         DONE - * Save your line and assign that to the content of the notification *
         DONE - * Segue into that line when notification is pressed and pass in data to show *
-        Set up app to regularly refresh data in the background (even if app isnt open)
+        DONE - * Set up app to regularly refresh data in the background (even if app isnt open) *
+     
+        Notifications
+        - Implement push notifications to replace local notifications
         - Choose time for scheduled notifications to run
         - Let user choose time to schedule notification
+     
+        Other
         - Segue straight to preferred line page if they have chosen preferred line
         - Update styling of buttons on line pages
         - Set up error message if a) not connected to the internet or b) notifications are disabled
         - Fix bugs
+        - Check and change any poor variable names
      
      
      Bugs:
