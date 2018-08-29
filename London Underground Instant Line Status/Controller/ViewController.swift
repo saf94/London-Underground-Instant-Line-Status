@@ -20,8 +20,13 @@ class ViewController: UIViewController {
         DONE - * Save your line and assign that to the content of the notification *
         DONE - * Segue into that line when notification is pressed and pass in data to show *
         Set up app to regularly refresh data in the background (even if app isnt open)
-        Choose time for scheduled notifications to run
-        Let user choose time to schedule notification
+        - Choose time for scheduled notifications to run
+        - Let user choose time to schedule notification
+        - Segue straight to preferred line page if they have chosen preferred line
+        - Update styling of buttons on line pages
+        - Set up error message if a) not connected to the internet or b) notifications are disabled
+        - Fix bugs
+     
      
      Bugs:
         - Set as preferred line button doesnt disappear when you open line page through tapping on notification
@@ -29,10 +34,6 @@ class ViewController: UIViewController {
         - Autolayout for buttons at bottom of linepage vc don't scale properly
         -
      
-     Main Issues:
-        1) Trying to save user's preferred line as a string and using that string to get data for that line from the tflData class instance and adding the line status to the body of the notification. Currently body doesn't show anything, unsure why this is
-     
-        2) After user taps on notification it opens app and segues to their line, but data isnt passed through the segue to the next viewcontroller so the data to show the line status doesn't exist and the viewcontroller is blank with no data
      */
     
     @IBOutlet weak var bakerlooLineButton: UIButton!
@@ -49,7 +50,6 @@ class ViewController: UIViewController {
     
     //variable to track whether have arrived here from tapping notification and in that case should segue straight to the lineStatus viewcontroller
     var toSegueStraightToLine : String = ""
-    let getTflData = GetTflData()
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
 
         //ISSUE 2) - Tried to write a closure because i thought the data wasn't being passed into the segue as maybe it hadn't loaded it from the API yet? However this closure doesnt work and the body of the closure doesn't run?
         
-        getTflData.getTubeStatusData() { () in
+        GetTflData.getTubeStatusData() { () in
             self.scheduleNotifications()
             self.segueStraightToLinePage()
         }
@@ -100,37 +100,37 @@ class ViewController: UIViewController {
         switch preferredLine {
         case "Bakerloo":
             content.title = "Bakerloo Line Status"
-            content.body = getTflData.lineStatusObject.Bakerloo.lineStatus
+            content.body = GetTflData.lineStatusObject.Bakerloo.lineStatus
         case "Central":
             content.title = "Central Line Status"
-            content.body = getTflData.lineStatusObject.Central.lineStatus
+            content.body = GetTflData.lineStatusObject.Central.lineStatus
         case "Circle":
             content.title = "Circle Line Status"
-            content.body = getTflData.lineStatusObject.Circle.lineStatus
+            content.body = GetTflData.lineStatusObject.Circle.lineStatus
         case "District":
             content.title = "District Line Status"
-            content.body = getTflData.lineStatusObject.District.lineStatus
+            content.body = GetTflData.lineStatusObject.District.lineStatus
         case "HammersmithAndCity":
             content.title = "Hammersmith & City Line Status"
-            content.body = getTflData.lineStatusObject.HammersmithAndCity.lineStatus
+            content.body = GetTflData.lineStatusObject.HammersmithAndCity.lineStatus
         case "Jubilee":
             content.title = "Jubilee Line Status"
-            content.body = getTflData.lineStatusObject.Jubilee.lineStatus
+            content.body = GetTflData.lineStatusObject.Jubilee.lineStatus
         case "Metropolitan":
             content.title = "Metropolitan Line Status"
-            content.body = getTflData.lineStatusObject.Metropolitan.lineStatus
+            content.body = GetTflData.lineStatusObject.Metropolitan.lineStatus
         case "Northern":
             content.title = "Northern Line Status"
-            content.body = getTflData.lineStatusObject.Northern.lineStatus
+            content.body = GetTflData.lineStatusObject.Northern.lineStatus
         case "Piccadilly":
             content.title = "Piccadilly Line Status"
-            content.body = getTflData.lineStatusObject.Piccadilly.lineStatus
+            content.body = GetTflData.lineStatusObject.Piccadilly.lineStatus
         case "Victoria":
             content.title = "Victoria Line Status"
-            content.body = getTflData.lineStatusObject.Victoria.lineStatus
+            content.body = GetTflData.lineStatusObject.Victoria.lineStatus
         case "WaterlooAndCity":
             content.title = "Waterloo & City Line Status"
-            content.body = getTflData.lineStatusObject.WaterlooAndCity.lineStatus
+            content.body = GetTflData.lineStatusObject.WaterlooAndCity.lineStatus
         default:
             print("Some other character")
             return
@@ -139,7 +139,7 @@ class ViewController: UIViewController {
         content.sound = UNNotificationSound.default()
         
         //notification runs after 5 seconds of view loading, this is for testing purposes - would actually run once or twice a day at a set time
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20.0, repeats: false)
         let request = UNNotificationRequest(identifier: "lineStatusUpdate", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { (error) in
@@ -179,7 +179,7 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let lineStatusObject = getTflData.lineStatusObject
+        let lineStatusObject = GetTflData.lineStatusObject
         if segue.identifier == "bakerlooLinePage" {
             let lineStatusVC = segue.destination as! LineStatusViewController
             lineStatusVC.lineData = lineStatusObject.Bakerloo
