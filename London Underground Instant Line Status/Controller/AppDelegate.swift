@@ -37,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+    application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+    print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
         
         UNUserNotificationCenter.current().delegate = self
         
@@ -47,6 +47,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         return true
+    }
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        let currentData = GetTflData.lineStatusObject
+        GetTflData.getTubeStatusData() {
+            if GetTflData.didApiSucceed == true {
+                if GetTflData.lineStatusObject === currentData {
+                    completionHandler(.noData)
+                } else {
+                    completionHandler(.newData)
+                }
+            } else if GetTflData.didApiSucceed == false {
+                completionHandler(.failed)
+            }
+            
+        }
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

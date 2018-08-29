@@ -12,16 +12,19 @@ import SwiftyJSON
 
 class GetTflData {
     
-    let APP_ID = "d90c8f38"
-    let API_KEY = "0914a79d60611a74771962b177ce4785"
-    let urlEndpoint = "https://api.tfl.gov.uk/line/mode/tube/status"
-    var lineStatusObject = LineStatusModel()
+    static let APP_ID = "d90c8f38"
+    static let API_KEY = "0914a79d60611a74771962b177ce4785"
+    static let urlEndpoint = "https://api.tfl.gov.uk/line/mode/tube/status"
+    static var didApiSucceed : Bool? = nil
+    static var lineStatusObject = LineStatusModel()
     
-    func getTubeStatusData(completionHandler: @escaping () -> Void) {
+    static func getTubeStatusData(completionHandler: @escaping () -> Void) {
+        didApiSucceed = nil
         Alamofire.request(urlEndpoint, method: .get).responseJSON {
             response in
             if response.result.isSuccess {
                 print("Success!")
+                didApiSucceed = true
                 
                 let lineStatus : JSON = JSON(response.result.value!)
                 
@@ -114,6 +117,9 @@ class GetTflData {
                 }
                 
                 completionHandler()
+                
+            } else {
+                didApiSucceed = false
             }
         }
     }
