@@ -20,26 +20,25 @@ class ViewController: UIViewController {
         DONE - * Save your line and assign that to the content of the notification *
         DONE - * Segue into that line when notification is pressed and pass in data to show *
         DONE - * Set up app to regularly refresh data in the background (even if app isnt open) *
+        DONE - * Segue straight to preferred line page if they have chosen preferred line *
+        DONE - * Update styling of buttons on line pages *
      
         Notifications
         - Implement push notifications to replace local notifications
         - Choose time for scheduled notifications to run
         - Let user choose time to schedule notification
+        - Reschedule notification if preferred line is changed
+        - Schedule notification on press of set preferred line
      
         Other
-        - Segue straight to preferred line page if they have chosen preferred line
-        - Update styling of buttons on line pages
         - Set up error message if a) not connected to the internet or b) notifications are disabled
         - Fix bugs
         - Check and change any poor variable names
      
-     
      Bugs:
-        - Set as preferred line button doesnt disappear when you open line page through tapping on notification
-        - Notification send you to wrong line page if you change preferred line before you tap it
+        - FIXED I THINK - * Set as preferred line button doesnt disappear when you open line page through tapping on notification *
         - Autolayout for buttons at bottom of linepage vc don't scale properly
-        -
-     
+        - MAYBE NOT A BUG - Notification send you to wrong line page if you change preferred line before you tap it
      */
     
     @IBOutlet weak var bakerlooLineButton: UIButton!
@@ -62,7 +61,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        //ISSUE 2) - Tried to write a closure because i thought the data wasn't being passed into the segue as maybe it hadn't loaded it from the API yet? However this closure doesnt work and the body of the closure doesn't run?
+        if defaults.string(forKey: "PreferredLineData") != nil {
+            toSegueStraightToLine = "Yes"
+        }
         
         GetTflData.getTubeStatusData() { () in
             self.scheduleNotifications()
@@ -70,14 +71,20 @@ class ViewController: UIViewController {
         }
         addStylingToButton()
         
-        
     }
     
     func segueStraightToLinePage() {
         if toSegueStraightToLine == "Yes" {
             //segueing to bakerloo line only just for testing, should segue to the users saved preferred line
             let preferredLine = defaults.string(forKey: "PreferredLineData")!.lowercased()
-            performSegue(withIdentifier: "\(preferredLine)LinePage", sender: self)
+            if preferredLine == "hammersmith & city" {
+                performSegue(withIdentifier: "hammersmithAndCityLinePage", sender: self)
+            } else if preferredLine == "waterloo & city" {
+                performSegue(withIdentifier: "waterlooAndCityLinePafe", sender: self)
+            } else {
+                performSegue(withIdentifier: "\(preferredLine)LinePage", sender: self)
+            }
+            
             toSegueStraightToLine = ""
         }
     }
@@ -100,57 +107,61 @@ class ViewController: UIViewController {
     
     //ISSUE 1) - Am using the saved string of the users line preference to assign the line status to the notification content body but it doesn't show up in the notification pop up, not sure why
     func scheduleNotifications() {
-        let preferredLine = defaults.string(forKey: "PreferredLineData")!
-        let content = UNMutableNotificationContent()
-        
-        switch preferredLine {
-        case "Bakerloo":
-            content.title = "Bakerloo Line Status"
-            content.body = GetTflData.lineStatusObject.Bakerloo.lineStatus
-        case "Central":
-            content.title = "Central Line Status"
-            content.body = GetTflData.lineStatusObject.Central.lineStatus
-        case "Circle":
-            content.title = "Circle Line Status"
-            content.body = GetTflData.lineStatusObject.Circle.lineStatus
-        case "District":
-            content.title = "District Line Status"
-            content.body = GetTflData.lineStatusObject.District.lineStatus
-        case "HammersmithAndCity":
-            content.title = "Hammersmith & City Line Status"
-            content.body = GetTflData.lineStatusObject.HammersmithAndCity.lineStatus
-        case "Jubilee":
-            content.title = "Jubilee Line Status"
-            content.body = GetTflData.lineStatusObject.Jubilee.lineStatus
-        case "Metropolitan":
-            content.title = "Metropolitan Line Status"
-            content.body = GetTflData.lineStatusObject.Metropolitan.lineStatus
-        case "Northern":
-            content.title = "Northern Line Status"
-            content.body = GetTflData.lineStatusObject.Northern.lineStatus
-        case "Piccadilly":
-            content.title = "Piccadilly Line Status"
-            content.body = GetTflData.lineStatusObject.Piccadilly.lineStatus
-        case "Victoria":
-            content.title = "Victoria Line Status"
-            content.body = GetTflData.lineStatusObject.Victoria.lineStatus
-        case "WaterlooAndCity":
-            content.title = "Waterloo & City Line Status"
-            content.body = GetTflData.lineStatusObject.WaterlooAndCity.lineStatus
-        default:
-            print("Some other character")
-            return
+        if let preferredLine = defaults.string(forKey: "PreferredLineData") {
+            let content = UNMutableNotificationContent()
+            
+            switch preferredLine {
+            case "Bakerloo":
+                content.title = "Bakerloo Line Status"
+                content.body = GetTflData.lineStatusObject.Bakerloo.lineStatus
+            case "Central":
+                content.title = "Central Line Status"
+                content.body = GetTflData.lineStatusObject.Central.lineStatus
+            case "Circle":
+                content.title = "Circle Line Status"
+                content.body = GetTflData.lineStatusObject.Circle.lineStatus
+            case "District":
+                content.title = "District Line Status"
+                content.body = GetTflData.lineStatusObject.District.lineStatus
+            case "HammersmithAndCity":
+                content.title = "Hammersmith & City Line Status"
+                content.body = GetTflData.lineStatusObject.HammersmithAndCity.lineStatus
+            case "Jubilee":
+                content.title = "Jubilee Line Status"
+                content.body = GetTflData.lineStatusObject.Jubilee.lineStatus
+            case "Metropolitan":
+                content.title = "Metropolitan Line Status"
+                content.body = GetTflData.lineStatusObject.Metropolitan.lineStatus
+            case "Northern":
+                content.title = "Northern Line Status"
+                content.body = GetTflData.lineStatusObject.Northern.lineStatus
+            case "Piccadilly":
+                content.title = "Piccadilly Line Status"
+                content.body = GetTflData.lineStatusObject.Piccadilly.lineStatus
+            case "Victoria":
+                content.title = "Victoria Line Status"
+                content.body = GetTflData.lineStatusObject.Victoria.lineStatus
+            case "WaterlooAndCity":
+                content.title = "Waterloo & City Line Status"
+                content.body = GetTflData.lineStatusObject.WaterlooAndCity.lineStatus
+            default:
+                print("Some other character")
+                return
+            }
+            
+            content.sound = UNNotificationSound.default()
+            
+            //notification runs after 5 seconds of view loading, this is for testing purposes - would actually run once or twice a day at a set time
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10.0, repeats: false)
+            let request = UNNotificationRequest(identifier: "lineStatusUpdate", content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { (error) in
+                print(error as Any)
+            }
         }
         
-        content.sound = UNNotificationSound.default()
         
-        //notification runs after 5 seconds of view loading, this is for testing purposes - would actually run once or twice a day at a set time
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20.0, repeats: false)
-        let request = UNNotificationRequest(identifier: "lineStatusUpdate", content: content, trigger: trigger)
         
-        UNUserNotificationCenter.current().add(request) { (error) in
-            print(error as Any)
-        }
     }
     
     @IBAction func lineStatusButtons(_ sender: UIButton) {

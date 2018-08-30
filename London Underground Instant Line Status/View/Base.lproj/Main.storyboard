@@ -272,45 +272,36 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="za1-w8-1Ff" userLabel="BottomContainer">
                                 <rect key="frame" x="0.0" y="224" width="414" height="512"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-u7-jgM">
-                                        <rect key="frame" x="122" y="357" width="171" height="47"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70275042808219179" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="47" id="DRb-Cu-aff"/>
-                                            <constraint firstAttribute="width" constant="171" id="oeV-Vc-4BY"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Return">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="dismissViewController:" destination="TS6-Mj-xzI" eventType="touchUpInside" id="X9z-rs-P3J"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lk3-v1-bqI">
-                                        <rect key="frame" x="86" y="434.66666666666663" width="243" height="47"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.70275042809999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="243" id="osQ-hP-FXp"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Set as preferred line">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="setLineAsPreferred:" destination="TS6-Mj-xzI" eventType="touchUpInside" id="9jR-56-NGx"/>
-                                        </connections>
-                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Mn-PQ-Jzr" userLabel="Bottom Buttons Container">
+                                        <rect key="frame" x="0.0" y="451" width="414" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ea-u7-jgM">
+                                                <rect key="frame" x="0.0" y="6" width="207" height="47"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="↩︎ Return">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="dismissViewController:" destination="TS6-Mj-xzI" eventType="touchUpInside" id="X9z-rs-P3J"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lk3-v1-bqI">
+                                                <rect key="frame" x="178" y="6" width="236" height="47"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="Set as preferred line">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="setLineAsPreferred:" destination="TS6-Mj-xzI" eventType="touchUpInside" id="9jR-56-NGx"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="2ea-u7-jgM" secondAttribute="bottom" constant="108" id="5WS-K5-x0x"/>
-                                    <constraint firstItem="lk3-v1-bqI" firstAttribute="leading" secondItem="za1-w8-1Ff" secondAttribute="leading" constant="85.5" id="AxC-5U-6sS"/>
-                                    <constraint firstAttribute="bottom" secondItem="lk3-v1-bqI" secondAttribute="bottom" constant="30.5" id="EYG-wC-3v6"/>
-                                    <constraint firstItem="lk3-v1-bqI" firstAttribute="top" secondItem="2ea-u7-jgM" secondAttribute="bottom" constant="30.5" id="FCn-Tt-6da"/>
-                                    <constraint firstAttribute="trailing" secondItem="lk3-v1-bqI" secondAttribute="trailing" constant="85.5" id="SM9-M0-Da5"/>
-                                    <constraint firstItem="2ea-u7-jgM" firstAttribute="leading" secondItem="za1-w8-1Ff" secondAttribute="leading" constant="122" id="aHA-X9-tt6"/>
-                                    <constraint firstAttribute="trailing" secondItem="2ea-u7-jgM" secondAttribute="trailing" constant="121" id="zAV-eg-2dh"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -329,6 +320,7 @@
                         <viewLayoutGuide key="safeArea" id="Z0h-36-YcS"/>
                     </view>
                     <connections>
+                        <outlet property="bottomButtonContainer" destination="8Mn-PQ-Jzr" id="Dhb-Co-cWf"/>
                         <outlet property="linePreferenceButton" destination="lk3-v1-bqI" id="l9k-8X-dqF"/>
                         <outlet property="lineStatusDetails" destination="Pxl-iH-bww" id="sJg-SZ-4AB"/>
                         <outlet property="pageHeading" destination="XEa-lu-Jvk" id="Ymj-1O-Yzi"/>

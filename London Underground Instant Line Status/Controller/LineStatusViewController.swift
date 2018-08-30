@@ -18,6 +18,7 @@ class LineStatusViewController: UIViewController {
     @IBOutlet weak var lineStatusDetails: UILabel!
     @IBOutlet weak var pageHeading: UILabel!
     @IBOutlet weak var linePreferenceButton: UIButton!
+    @IBOutlet weak var bottomButtonContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +30,12 @@ class LineStatusViewController: UIViewController {
         lineStatusDetails.text = "\(lineData.lineName): \(lineData.lineStatus) \(lineData.lineDescription)"
         
         self.view.insertSubview(gradientBackground, at: 1)
+        bottomButtonContainer.backgroundColor = lineColour
         addTubeLineShape()
         addTubeStopShape()
         
         if defaults.string(forKey: "PreferredLineData") == lineData.lineName {
-            self.linePreferenceButton.isHidden = true
+            self.linePreferenceButton.setTitle("Preferred Line ✓", for: .normal)
         }
     }
     
@@ -49,7 +51,7 @@ class LineStatusViewController: UIViewController {
     
     @IBAction func setLineAsPreferred(_ sender: Any) {
         self.defaults.set(lineData.lineName, forKey: "PreferredLineData")
-        self.linePreferenceButton.isHidden = true
+        self.linePreferenceButton.setTitle("Preferred Line ✓", for: .normal)
         
     }
     

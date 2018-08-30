@@ -113,7 +113,6 @@
 				D84141DA211EF0B200B0CF21 /* ViewController.swift */,
 				D84141D8211EF0B200B0CF21 /* AppDelegate.swift */,
 				D84141F621218A5000B0CF21 /* LineStatusViewController.swift */,
-				D84141FC2124365200B0CF21 /* GetTflData.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -123,6 +122,7 @@
 			children = (
 				D84141EE211F000800B0CF21 /* LineStatusModel.swift */,
 				D84141FA2122E36C00B0CF21 /* Colours.swift */,
+				D84141FC2124365200B0CF21 /* GetTflData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
