@@ -32,6 +32,8 @@ class ViewController: UIViewController {
      
         Other
         - Set up error message if a) not connected to the internet or b) notifications are disabled
+        - Change auto segue back so it doesnt auto segue when opening the app to your preferred line
+        - Add icons to show if lines have minor or major delays on home VC
         - Fix bugs
         - Check and change any poor variable names
      
