@@ -18,6 +18,7 @@
 		D84141F92122DC0B00B0CF21 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84141F82122DC0B00B0CF21 /* GradientBackground.swift */; };
 		D84141FB2122E36C00B0CF21 /* Colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84141FA2122E36C00B0CF21 /* Colours.swift */; };
 		D84141FD2124365200B0CF21 /* GetTflData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84141FC2124365200B0CF21 /* GetTflData.swift */; };
+		D861C02821398130004E5AA3 /* LinePageDecorationShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D861C02721398130004E5AA3 /* LinePageDecorationShapes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D84141F82122DC0B00B0CF21 /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
 		D84141FA2122E36C00B0CF21 /* Colours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colours.swift; sourceTree = "<group>"; };
 		D84141FC2124365200B0CF21 /* GetTflData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTflData.swift; sourceTree = "<group>"; };
+		D861C02721398130004E5AA3 /* LinePageDecorationShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinePageDecorationShapes.swift; path = "/Users/shayat/Documents/programming/iOS/London Underground Instant Line Status/London Underground Instant Line Status/View/LinePageDecorationShapes.swift"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		D84141EA211EF8F100B0CF21 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D861C02721398130004E5AA3 /* LinePageDecorationShapes.swift */,
 				D84141DC211EF0B300B0CF21 /* Main.storyboard */,
 				D84141F82122DC0B00B0CF21 /* GradientBackground.swift */,
 			);
@@ -256,6 +259,7 @@
 			files = (
 				D84141F92122DC0B00B0CF21 /* GradientBackground.swift in Sources */,
 				D84141FB2122E36C00B0CF21 /* Colours.swift in Sources */,
+				D861C02821398130004E5AA3 /* LinePageDecorationShapes.swift in Sources */,
 				D84141F721218A5000B0CF21 /* LineStatusViewController.swift in Sources */,
 				D84141DB211EF0B200B0CF21 /* ViewController.swift in Sources */,
 				D84141FD2124365200B0CF21 /* GetTflData.swift in Sources */,
